@@ -1,0 +1,27 @@
+{
+  "artifact": "KAIRO+PAL P0 RC1 Debian package",
+  "status": "pre-qemu-integration-test",
+  "stable": false,
+  "production_ready": false,
+  "latest": false,
+  "package_name": "kairo-pal-p0-security-package",
+  "version": "0.1.0+6afd333d",
+  "architecture": "amd64",
+  "deb": "kairo-pal-p0-security-package_0.1.0+6afd333d_amd64.deb",
+  "sha256": "33b69a17e12e86d2b435be5b1ae5d46a2c02d3a424f65137c897389e188e337c",
+  "includes": [
+    "/usr/bin/kairo-aegis",
+    "/usr/libexec/kairo-pal-daemon",
+    "/etc/default/kairo-pal",
+    "/etc/kairo/kairo-pal-p0-observe.toml",
+    "/etc/kairo/kairo-pal-p0-quarantine.toml",
+    "/etc/kairo/kairo-pal-p0-strict.toml",
+    "/lib/systemd/system/kairo-pal.service"
+  ],
+  "notes": [
+    "RC1 includes the init-system-neutral kairo-pal-daemon scaffold built from TUFF-PAL/core.",
+    "No install or service start was performed during artifact staging.",
+    "Not marked latest/stable/production-ready.",
+    "QEMU multi-OS integration testing is pending."
+  ]
+}
