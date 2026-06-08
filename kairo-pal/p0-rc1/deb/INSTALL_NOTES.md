@@ -1,27 +1,20 @@
-# KAIRO+PAL P0 RC1 Debian package
+# KAIRO+PAL P0 RC1 corrected accel-vulkan artifact
 
-Status: pre-QEMU-integration-test.
+This RC1 artifact replaces the earlier unpublished RC1 package whose build path omitted `--features accel-vulkan`.
 
-This RC1 artifact adds `/usr/libexec/kairo-pal-daemon` to the RC0 KAIRO+PAL package scaffold.
+The replacement is made before public RC1 announcement.
 
-The daemon is built from TUFF-PAL/core and is init-system-neutral. It emits JSON-lines to stdout/stderr and performs no network access, no enforcement actions, and no OS mutation.
+## Validation status
 
-The Debian package includes a systemd unit for Debian-host validation, but systemd integration is packaging-side only and is not a TUFF-PAL runtime dependency.
+- Extracted package validation: PASS
+- `kairo-aegis status`: PASS
+- `kairo-aegis smoke`: PASS
+- `kairo-aegis vulkan-selftest`: PASS
+- `vulkan_feature_enabled=true`: confirmed
+- `vulkan_runtime_available=true`: confirmed
+- Vulkan dispatch: confirmed
+- SIGSEGV: not reproduced
 
-This artifact is not latest, stable, or production-ready.
+## Notes
 
-Validation performed before staging:
-
-- daemon built in release mode
-- extracted daemon executed with `--once`
-- package contents inspected with `dpkg-deb -I` and `dpkg-deb -c`
-- `/usr/libexec/kairo-pal-daemon` confirmed present and executable
-- no package install was performed
-- no service start was performed
-- no QEMU run was performed
-
-Next steps:
-
-1. Install RC1 on the host test PC.
-2. Validate `kairo-pal.service` manual start.
-3. Build QEMU multi-OS test environments.
+The previous Debian/Ubuntu/Fedora RC1 validation evidence remains useful for service and multi-OS behavior, but it was based on a package where Vulkan was not enabled in the distributed binary. This corrected RC1 must be re-run through host install validation and the QEMU OS matrix before public release.
